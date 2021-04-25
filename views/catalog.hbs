@@ -1,0 +1,30 @@
+<main>
+  <form class="searchBar">
+    <input value="search for a product / service">
+  </form>
+  <section>
+    <h2>Fruits</h2>
+    <div class="articles">
+     
+    </div>
+  </section>
+  <section>
+    <h2>Vegetables</h2>
+    <div class="articles">
+      {{#each product_list}}
+        <h1>{{this.name}}</h1> 
+        {{#with this.categorie}}
+          {{name}}
+        {{/with}}
+        
+      {{/each}}
+
+    </div>
+  </section>
+  <section>
+    <h2>Meat</h2>
+    <div class="articles">
+     
+    </div>
+  </section>
+</main>
