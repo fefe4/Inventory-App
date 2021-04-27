@@ -1,0 +1,21 @@
+
+
+ <h1>{{title}}</h1>
+
+  <form method='Post' action="">
+    <label for="name">Name</label>
+    <input type="text", placeholder="Vegetables, Fruits, Meats, Drinks, Sodas, Snacks...", name="name">
+    <label for="price">Price</label>
+    <input type="number", placeholder="00", name="price">
+    <label for="description">Description</label>
+    <input type="text", placeholder="some description about this product", name="description">
+    <label for="code">Code:</label>
+    <input type="number", placeholder="00000000000000000", name="code">
+    <label for="categorie">Categorie</label>
+    {{#each categories}}
+      <input type="checkbox" name='categorie', id={{_id}}, value={{_id}}, checked={{categorie.checked}}> 
+      <label for={{_id}}>{{name}}</label>
+    {{/each}}
+    <button (type="submit")>Submit</button>
+  </form>
+

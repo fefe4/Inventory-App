@@ -7,8 +7,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var catalogRouter = require('./routes/catalog');
 
-
-
 var app = express();
 
 var mongoose = require('mongoose');
