@@ -1,0 +1,17 @@
+<h1>{{title}}:{{categorie.name}}</h1>
+
+{{#if categorie_products.length}}
+
+  <p>Delete the following books before attempting to delete this author.</p>
+  {{#each categorie_products}}
+    <a href={{url}}>{{name}}</a>
+  {{/each}}
+
+{{else}}
+  <p>do you really wish to delete this Categorie?</p>
+  <form method="POST">
+    <input type='hidden' name='categorieid' required="true" value={{categorie._id}}>{{categorie._id}}
+    <button type="submit">Delete</button>
+  </form>
+{{/if}}
+  

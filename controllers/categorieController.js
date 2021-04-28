@@ -91,24 +91,124 @@ exports.categorie_create_post =  [
     }
   ];
 
+// Handle Categorie delete on Get.
+exports.categorie_delete_get = function(req, res, next) {
+    // Display Categorie delete form on GET.
+  async.parallel({
+      categorie: function(callback) {
+          Categorie.findById(req.params.id).exec(callback)
+      },
+      categorie_products: function(callback) {
+        Product.find({ 'categorie': req.params.id }).exec(callback)
+      },
+  }, function(err, results) {
+      if (err) { return next(err); }
+      if (results.categorie==null) { // No results.
+          res.redirect('/catalog/categories');
+      }
+      // Successful, so render.
+      res.render('categorie_delete', { title: 'Delete Categorie', categorie: results.categorie, categorie_products: results.categorie_products } );
+  });
 
 
-// Display Gategorie delete form on GET.
-exports.categorie_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Gategorie delete GET');
 };
 
-// Handle Gategorie delete on POST.
-exports.categorie_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Gategorie delete POST');
+// Handle categorie delete on POST.
+exports.categorie_delete_post = function(req, res, next) {
+
+  async.parallel({
+      categorie: function(callback) {
+        Categorie.findById(req.body.categorieid).exec(callback)
+        console.log(Categorie)
+      },
+      categories_products: function(callback) {
+        Product.find({ 'categorie': req.body.categorieid }).exec(callback)
+      },
+  }, function(err, results) {
+      if (err) { return next(err); }
+      // Success
+      if (results.categories_products.length > 0) {
+          // Categorie has Products. Render in same way as for GET route.
+          res.render('categorie_delete', { title: 'Delete Categorie', categorie: results.categorie, categorie_products: results.categories_products } );
+          return;
+      }
+      else {
+          // Categorie has no Products. Delete it and redirect to the list of categories.
+          Categorie.findByIdAndRemove(req.body.categorieid, function deleteCategorie(err) {
+              if (err) { return next(err); }
+              // Success - go to author list
+              res.redirect('/catalog/categorie')
+          })
+      }
+  });
 };
+
+
+
 
 // Display Gategorie update form on GET.
 exports.categorie_update_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Gategorie update GET');
+   // Display Categorie delete form on GET.
+   async.parallel({
+    categorie: function(callback) {
+        Categorie.findById(req.params.id).exec(callback)
+    },
+   
+}, function(err, results) {
+    if (err) { return next(err); }
+    if (results.categorie==null) { // No results.
+        res.redirect('/catalog/categories');
+    }
+    // Successful, so render.
+    res.render('categorie_form', { title: 'Update Categorie', categorie: results.categorie, categorie_products: results.categorie_products } );
+});
+
 };
 
 // Handle Gategorie update on POST.
-exports.categorie_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Gategorie update POST');
-};
+exports.categorie_update_post = [
+
+  // Validate and santize the name field.
+  body('name', 'Categorie name required').trim().isLength({ min: 1 }).escape(),
+
+  // Process request after validation and sanitization.
+  (req, res, next) => {
+
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    // Create a categorie object with escaped and trimmed data.
+    var categorie = new Categorie(
+      { name: req.body.name,
+        _id:req.params.id //This is required
+      }
+    );
+
+    if (!errors.isEmpty()) {
+      // There are errors. Render the form again with sanitized values/error messages.
+      res.render('categorie_form', { title: 'Update Categorie', categorie: categorie, errors: errors.array()});
+      return;
+    }
+    else {
+      // Data from form is valid.
+      // Check if Categorie with same name already exists.
+      Categorie.findOne({ 'name': req.body.name })
+        .exec( function(err, found_categorie) {
+           if (err) { return next(err); }
+
+           if (found_categorie) {
+             // Categorie exists, redirect to its detail page.
+             res.redirect(found_categorie.url);
+           }
+           else {
+              // Data from form is valid. Update the record.
+            Categorie.findByIdAndUpdate(req.params.id, categorie, {}, function (err, thecategorie) {
+                  if (err) { return next(err); }
+                  // Successful - redirect to product detail page.
+                  res.redirect(thecategorie.url);
+                });
+          }
+         });
+    }
+  }
+];

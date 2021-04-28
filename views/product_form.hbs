@@ -13,7 +13,7 @@
     <input type="number", placeholder="00000000000000000", name="code">
     <label for="categorie">Categorie</label>
     {{#each categories}}
-      <input type="checkbox" name='categorie', id={{_id}}, value={{_id}}, checked={{categorie.checked}}> 
+      <input type="checkbox" name='categorie', id={{_id}}, value={{_id}}> 
       <label for={{_id}}>{{name}}</label>
     {{/each}}
     <button (type="submit")>Submit</button>
