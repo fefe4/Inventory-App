@@ -1,34 +1,26 @@
 <main>
   <form class="searchBar">
-    <input value="search for a product / service">
+    <input placeholder="search for a product / service">
   </form>
-  <section>
-    <h2>Fruits</h2>
-    <div class="articles">
-      
-    </div>
-  </section>
-  <section>
+  <section class="categories">
     {{#each categories}}
       <a href='{{this.url}}'>{{this.name}}</a>
     {{/each}}
   </section>
   <section>
-    <h2>
-      <a href='/catalog/vegetables/'>Vegetables</a>
+    <div class="products">
       
-    </h2>
-    <div class="articles">
       {{#each product_list}}
-         <a href='{{this.url}}'>{{name}}</a>
+      <article>  
+          <a href='{{this.url}}'>
+          <img src='/{{this.image}}' alt="">
+          <h2>{{name}}</h2>
+          </a>
+          <p>{{this.description}}</p>
+          <h3>${{this.price}}</h3>
+          <button>Add to Cart</button>
+      </article>         
       {{/each}}
-    </div>
-    
-  </section>
-  <section>
-    <h2>Meat</h2>
-    <div class="articles">
-     
-    </div>
+    </div>   
   </section>
 </main>

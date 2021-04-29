@@ -1,13 +1,16 @@
 var Product = require('../models/product');
 var Categorie = require('../models/categorie');
 var async = require('async');
-var ProductInstance = require ('../models/productInstance')
+var ProductInstance = require ('../models/productInstance');
+var multer  = require('multer');
+var upload = multer({ dest: '../public/images/uploads/' });
+
 const { body,validationResult } = require("express-validator");
 
 exports.catalog = function(req, res, next) {
     async.series([
       function(callback){
-      Product.find({}, 'name categorie')
+      Product.find()
       .populate('categorie')   
       .exec(callback)
       },
@@ -27,7 +30,7 @@ exports.catalog = function(req, res, next) {
 // };
 
 // Display detail page for a specific product.
-exports.product_detail = function(req, res) {
+exports.product_detail = function(req, res, next) {
       async.parallel({
         product: function(callback) {
 
@@ -40,6 +43,7 @@ exports.product_detail = function(req, res) {
           ProductInstance.find({ 'product': req.params.id })
           .exec(callback);
         },
+
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.product==null) { // No results.
@@ -48,7 +52,7 @@ exports.product_detail = function(req, res) {
             return next(err);
         }
         // Successful, so render.
-        res.render('product_detail', { name: results.product.name, product: results.product, product_instances: results.product_instance } );
+        res.render('product_detail', { name: results.product.name, product: results.product, img_src:results.product.image , product_instances: results.product_instance } );
     });};
 
 // Display product create form on GET.
@@ -58,6 +62,7 @@ exports.product_create_get = function(req, res) {
       categories: function(callback) {
           Categorie.find(callback);
       },
+      
   }, function(err, results) {
       if (err) { return next(err); }
       res.render('product_form', { name: 'Create Product',  categories: results.categories });
@@ -84,9 +89,13 @@ exports.product_create_post = [
   body('price', 'price must not be empty').trim().isLength({min: 1 }).escape(),
   body('categorie.*').escape(),
 
+
   // Process request after validation and sanitization.
   (req, res, next) => {
+    console.log(JSON.stringify(req.file));
+    console.log(JSON.stringify(req.file.path));
 
+    
       // Extract the validation errors from a request.
       const errors = validationResult(req);
 
@@ -96,7 +105,8 @@ exports.product_create_post = [
           description: req.body.description,
           code: req.body.code,
           price:req.body.price,
-          categorie: req.body.categorie
+          categorie: req.body.categorie,
+          image: `uploads/${req.file.originalname}`
          });
 
       if (!errors.isEmpty()) {
@@ -117,7 +127,7 @@ exports.product_create_post = [
                       results.categories[i].checked='true';
                   }
               }
-              res.render('product_form', { title: 'Create product', categories:results.categories, product: product, errors: errors.array() });
+              res.render('product_form', { title: 'Create product', categories:results.categories, product: product, img_src:req.file.path, errors: errors.array() });
           });
           return;
       }
@@ -142,10 +152,10 @@ exports.product_delete_get = function(req, res) {
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.product==null) { // No results.
-            res.redirect('/catalog/categories');
+            res.redirect('/catalog/product');
         }
         // Successful, so render.
-        res.render('product_delete', { title: 'Delete Product', categorie: results.product} );
+        res.render('product_delete', { title: 'Delete Product', product: results.product} );
     });
   
 };
@@ -239,7 +249,8 @@ exports.product_update_post = [
             code: req.body.code,
             price:req.body.price, 
             categorie: (typeof req.body.categorie==='undefined') ? [] : req.body.categorie,
-            _id:req.params.id //This is required, or a new ID will be assigned!
+            _id:req.params.id, //This is required, or a new ID will be assigned!
+            image: `uploads/${req.file.originalname}`
            });
 
         if (!errors.isEmpty()) {

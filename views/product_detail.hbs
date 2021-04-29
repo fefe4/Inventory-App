@@ -1,3 +1,11 @@
-<h1>{{title}}</h1> 
-<h3>{{product.name}}</h3>
-<h2>{{product_instances}}</h2>
+<main>
+  <section class="productDetail">
+    <article>
+      <img src="/{{img_src}}" alt="not found">
+      <h2>{{product.name}}</h2>
+      <p>{{product.description}}</p>
+      <h3>${{product.price}}</h3>
+      <button>Add to Cart</button>   
+    </article>
+  </section>
+</main>

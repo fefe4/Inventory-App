@@ -1,5 +1,19 @@
-<h1>{{categorie.name}}</h1>
-{{#each categorie_products }}
-<h2>{{name}}</h2>
-{{/each}}
-
+<main>
+  <h1>{{categorie.name}}</h1>
+  <section>
+    <div class="products">
+    {{#each categorie_products }}
+      <article>  
+        <a href='{{this.url}}'>
+          <img src='/{{this.image}}' alt="">
+          <h2>{{name}}</h2>
+        </a>
+        <p>{{this.description}}</p>
+        <h3>${{this.price}}</h3>
+        <button>Add to Cart</button>
+      </article>         
+    {{/each}}
+    </div>
+  </section>
+</main>
+  

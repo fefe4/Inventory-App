@@ -2,20 +2,23 @@
 
  <h1>{{title}}</h1>
 
-  <form method='Post' action="">
+  <form method='Post' enctype="multipart/form-data" action="">
     <label for="name">Name</label>
-    <input type="text", placeholder="Vegetables, Fruits, Meats, Drinks, Sodas, Snacks...", name="name">
+    <input type="text", placeholder="Vegetables, Fruits, Meats, Drinks, Sodas, Snacks...", value={{product.name}} name="name">
     <label for="price">Price</label>
-    <input type="number", placeholder="00", name="price">
+    <input type="number", placeholder="00", value={{product.price}} name="price">
     <label for="description">Description</label>
-    <input type="text", placeholder="some description about this product", name="description">
+    <input type="text", placeholder="some description about this product", value={{product.description}} name="description">
     <label for="code">Code:</label>
-    <input type="number", placeholder="00000000000000000", name="code">
+    <input type="number", placeholder="00000000000000000", value={{product.code}} name="code">
     <label for="categorie">Categorie</label>
+    <input type="file" class="form-control-file" name="uploaded_file">
+    <div>
     {{#each categories}}
       <input type="checkbox" name='categorie', id={{_id}}, value={{_id}}> 
       <label for={{_id}}>{{name}}</label>
     {{/each}}
+    </div>
     <button (type="submit")>Submit</button>
   </form>
 

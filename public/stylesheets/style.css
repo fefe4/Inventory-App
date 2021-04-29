@@ -54,11 +54,198 @@ table {
 }
 
 /****************reset ends*******************/
+@font-face {
+  font-family: 'RobotoSlab';
+  src: url("../fonts/RobotoSlab-VariableFont_wght.ttf");
+}
+
+.searchBar {
+  margin: 1.8vh auto;
+}
+
+.searchBar input {
+  height: 5vh;
+}
+
+.categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 1.7rem;
+}
+
+.products article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 40%;
+  margin: 1.5vh  3%;
+  border: 2px solid #87b37a;
+  -webkit-box-shadow: 2px 2px 8px #87b37a;
+          box-shadow: 2px 2px 8px #87b37a;
+  border-radius: 1vh;
+}
+
+.products img {
+  padding: auto;
+  width: 90%;
+  height: auto;
+  border-radius: 4%;
+}
+
+.products h2 {
+  font-weight: 800;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.products p {
+  font-size: 1.1  rem;
+}
+
+.products h3 {
+  font-size: 1.4rem;
+}
+
+.products button {
+  background-color: #77867f;
+  width: 85%;
+  margin: 0.5rem 0;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 1.2rem;
+  padding: 0.35rem;
+  border-radius: 10rem;
+  font-weight: 600;
+  color: white;
+  border-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.productDetail {
+  margin: 3vh auto 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 2px solid #87b37a;
+  -webkit-box-shadow: 2px 2px 8px #87b37a;
+          box-shadow: 2px 2px 8px #87b37a;
+  border-radius: 1vh;
+  line-height: 2.4rem;
+}
+
+.productDetail article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.productDetail img {
+  width: 85%;
+  padding: auto;
+  border-radius: 4%;
+}
+
+.productDetail h2 {
+  font-weight: 800;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.productDetail p {
+  font-size: 1.1  rem;
+}
+
+.productDetail h3 {
+  font-size: 1.4rem;
+}
+
+.productDetail button {
+  background-color: #77867f;
+  width: 50%;
+  margin: 0.5rem 0;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 1.2rem;
+  padding: 0.35rem;
+  border-radius: 10rem;
+  font-weight: 600;
+  color: white;
+  border-style: none;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 5%;
+  font-size: 1.5rem;
+}
+
+form label, form input, form button {
+  margin: 1%;
+}
+
+form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+form button {
+  width: 60%;
+  padding: 1rem;
+  font-size: 2rem;
+  background-color: white;
+}
+
 /**************border-box for all elements*************/
 /**https://coolors.co/dbb1bc-ffcad4-77867f-87b37a-9ce37d**/
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: 'RobotoSlab-VariableFont_wght';
 }
 
 nav {
@@ -108,7 +295,7 @@ main h1 {
   color: #87b37a;
 }
 
-main img {
+.background {
   position: fixed;
   width: 100%;
   height: 100%;

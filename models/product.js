@@ -8,7 +8,8 @@ var ProductSchema = new Schema(
     price: {type: Number, required:true},
     description: {type: String, required: true},
     code: {type: Number, required: true},
-    categorie: [{type: Schema.Types.ObjectId, ref: 'Categorie'}]
+    categorie: [{type: Schema.Types.ObjectId, ref: 'Categorie'}],
+    image: {type:String}
   }
 );
 
