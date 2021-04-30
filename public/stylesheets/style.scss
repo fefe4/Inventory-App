@@ -23,6 +23,7 @@ $color_five:#9ce37d;
 nav{
   display:block;
   height:10vh;
+  
 }
  
 nav .mainNav {
@@ -33,11 +34,13 @@ nav .mainNav {
   height:10vh;
   align-items:center;   
   background-color:#77867fde;
+  padding: 0 2.5%;
 }
 
 .mainNav img {
- height:8vh;
+ height:1.85rem;
  width:auto;
+ margin-top: 0.3rem;
 }
 
 .secondaryNav{
@@ -46,6 +49,10 @@ nav .mainNav {
   align-items: center;
   font-size: 4vh;
   
+}
+
+.home {
+  display:none;
 }
 
 main {
@@ -66,32 +73,10 @@ main {
   
 }
 
-// @media (min-width:1024px) { 
-//   nav .mainNav {
-//     display:flex;
-//     width:100%;
-//     position:fixed;
-//     justify-content: space-between;
-//     height:40px;
-//     align-items:center;
-//     color:$color_one;
-
-    
-//     li:nth-child(-n+3) {
-//       display:flex;
-//       justify-content: center;
-//       flex:1;
-//     }
-
-//   }
-
-
-//   .secondaryNav {
-//   display:flex;
-
-//   }
-// }
-
+.shop {
+  font-weight:800;
+  font-size:2rem;
+}
 
 ////********************************catalog******************************///@at-root
 .searchBar {
@@ -101,3 +86,19 @@ main {
     width:100%;
   } 
 }
+
+@media (min-width:726px){
+  .menu {
+    display:none;
+  }
+  .home {
+    display: block;
+    font-weight:800;
+    font-size:1.8rem; 
+  }
+
+  .background{
+    display:none;
+  }
+}
+

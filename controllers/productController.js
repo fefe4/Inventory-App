@@ -275,3 +275,21 @@ exports.product_update_post = [
         }
     }
 ];
+
+exports.admin = function(req,res) {
+    async.series([
+        function(callback){
+            Product.find()
+            .populate('categorie')   
+            .exec(callback)
+        },
+        function(callback){
+            Categorie.find()
+            .exec(callback)
+        }
+        
+    ], function (error, results){     
+        res.render('admin', { title: 'admin', product_list: results[0], categories: results[1] });
+    })
+};    
+    

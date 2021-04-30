@@ -11,8 +11,9 @@
     <input type="text", placeholder="some description about this product", value={{product.description}} name="description">
     <label for="code">Code:</label>
     <input type="number", placeholder="00000000000000000", value={{product.code}} name="code">
-    <label for="categorie">Categorie</label>
+    <label></label>
     <input type="file" class="form-control-file" name="uploaded_file">
+    <label for="categorie">Categorie</label>
     <div>
     {{#each categories}}
       <input type="checkbox" name='categorie', id={{_id}}, value={{_id}}> 

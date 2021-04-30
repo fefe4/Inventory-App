@@ -22,7 +22,6 @@ var upload = multer({ storage: storage })
 router.get("/", product_controller.catalog);
 //product controllers
 router.get("/product/create", product_controller.product_create_get);
-// router.post("/product/create", upload.single('uploaded_file'), product_controller.product_create_post);
 router.post("/product/create", upload.single('uploaded_file'), product_controller.product_create_post);
 router.get("/product/:id", product_controller.product_detail);
 router.get("/product/:id/update", product_controller.product_update_get);
@@ -37,9 +36,10 @@ router.get("/categorie/:id/delete", categorie_controller.categorie_delete_get);
 router.post("/categorie/:id/delete",categorie_controller.categorie_delete_post);
 router.get("/categorie/:id/update", categorie_controller.categorie_update_get);
 router.post("/categorie/:id/update", upload.single('uploaded_categorie'), categorie_controller.categorie_update_post);
-
-
-
 router.get("/categorie", categorie_controller.categorie_list);
+//admin
+router.get("/admin", product_controller.admin );
+
+
 
 module.exports = router;

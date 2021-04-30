@@ -5,8 +5,10 @@
   <section class="categories">
     {{#each categories}}
     <div>
+      <a href='{{this.url}}'>
       <img src='/{{this.image}}' alt="">
-      <a href='{{this.url}}'>{{this.name}}</a>
+      <h2>{{this.name}}</h2>
+      </a>
     </div>
     {{/each}}
   </section>

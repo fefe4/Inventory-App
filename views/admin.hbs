@@ -1,0 +1,29 @@
+<main>
+  <section>
+    <h2>Categories:</h2>
+    <ul>
+      {{#each categories}}
+        <li>
+          <h5>{{this.name}}</h5>
+          <a href='categorie/{{this.id}}/delete'>Delete</a>
+          <a href='categorie/{{this.id}}/update'>Update</a>
+        </li>
+      {{/each}}
+    </ul>
+    <a href='categorie/create'>Create</a>
+  </section>
+
+  <section>
+    <h2>Products:</h2>
+    <ul>
+    {{#each product_list}}
+      <li>
+        <h5>{{this.name}}</h5> 
+        <a href='product/{{this.id}}/delete'>Delete</a>
+        <a href='product/{{this.id}}/update'>Update</a>
+      </li>
+    {{/each}}
+    </ul>
+    <a href='product/create'>Create</a>
+  </section>
+</main>

@@ -8,22 +8,31 @@ main{
 .searchBar{
   margin: 1.8vh auto;
   input {
-    height:5vh;
+    height:3rem;
+    border-radius: 95vw;
+    font-size:1.5rem
   }
 }
 
 .categories {
+
   display:flex;
-  justify-content: space-around;
+  overflow-y: scroll;
+  justify-content: flex-start;
+
   img{
     width:20vw;
     height:auto;
     border-radius:50%;
+   
+   
   }
   div {
     display:flex;
     flex-direction: column;
-    a{
+    padding: 0 5vw; 
+  
+    h2{
       margin: 0.5rem 0;
       text-align: center;
     }
@@ -109,6 +118,7 @@ a{
     flex-direction: column;
   }
   img {
+    margin: 7.5%;
     width: 85%;
     padding: auto;
     border-radius:4%;
@@ -141,7 +151,17 @@ a{
     font-weight: 600;
     color:white;
     border-style:none;
+    margin-bottom: 7%;
   }
+}
+
+//categorie
+
+.title {
+  text-align:center;
+  color:$color_three;
+  font-weight:800;
+  margin: 0.5 rem 0;
 }
 
 //forms 
@@ -166,3 +186,23 @@ a{
  }
 
 
+@media (min-width:960px) {
+ .categories{
+   overflow-y: unset;
+   justify-content: space-around;
+   
+   img {
+     width:10vw;
+     border-radius: 15%;
+   }
+   h2{
+     font-size:1.2rem;
+   }
+   
+ }
+ .products {
+   article {
+     width:20%;
+   }
+ }
+}

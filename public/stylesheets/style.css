@@ -59,6 +59,10 @@ table {
   src: url("../fonts/RobotoSlab-VariableFont_wght.ttf");
 }
 
+main {
+  overflow-x: scroll;
+}
+
 .searchBar {
   margin: 1.8vh auto;
 }
@@ -71,8 +75,32 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  overflow-y: scroll;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.categories img {
+  width: 20vw;
+  height: auto;
+  border-radius: 50%;
+}
+
+.categories div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 5vw;
+}
+
+.categories div h2 {
+  margin: 0.5rem 0;
+  text-align: center;
 }
 
 .products {
@@ -84,9 +112,10 @@ table {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 2.5%;
   line-height: 1.7rem;
 }
 
@@ -98,19 +127,25 @@ table {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 40%;
-  margin: 1.5vh  3%;
+  width: 42.5%;
+  margin: 2.5%;
   border: 2px solid #87b37a;
   -webkit-box-shadow: 2px 2px 8px #87b37a;
           box-shadow: 2px 2px 8px #87b37a;
   border-radius: 1vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .products img {
-  padding: auto;
   width: 90%;
   height: auto;
   border-radius: 4%;
+  margin: 5%;
 }
 
 .products h2 {
@@ -177,6 +212,7 @@ a {
 }
 
 .productDetail img {
+  margin: 7.5%;
   width: 85%;
   padding: auto;
   border-radius: 4%;
@@ -209,6 +245,14 @@ a {
   font-weight: 600;
   color: white;
   border-style: none;
+  margin-bottom: 7%;
+}
+
+.title {
+  text-align: center;
+  color: #77867f;
+  font-weight: 800;
+  margin: 0.5 rem 0;
 }
 
 form {
@@ -240,6 +284,24 @@ form button {
   background-color: white;
 }
 
+@media (min-width: 960px) {
+  .categories {
+    overflow-y: unset;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .categories img {
+    width: 10vw;
+    border-radius: 15%;
+  }
+  .categories h2 {
+    font-size: 1.2rem;
+  }
+  .products article {
+    width: 20%;
+  }
+}
+
 /**************border-box for all elements*************/
 /**https://coolors.co/dbb1bc-ffcad4-77867f-87b37a-9ce37d**/
 * {
@@ -267,11 +329,13 @@ nav .mainNav {
       -ms-flex-align: center;
           align-items: center;
   background-color: #77867fde;
+  padding: 0 2.5%;
 }
 
 .mainNav img {
-  height: 8vh;
+  height: 1.85rem;
   width: auto;
+  margin-top: 0.3rem;
 }
 
 .secondaryNav {
@@ -283,6 +347,10 @@ nav .mainNav {
       -ms-flex-align: center;
           align-items: center;
   font-size: 4vh;
+}
+
+.home {
+  display: none;
 }
 
 main {
@@ -303,6 +371,11 @@ main h1 {
   margin-top: -10vh;
 }
 
+.shop {
+  font-weight: 800;
+  font-size: 2rem;
+}
+
 .searchBar {
   margin: 10px auto;
   width: 90%;
@@ -310,5 +383,19 @@ main h1 {
 
 .searchBar input {
   width: 100%;
+}
+
+@media (min-width: 726px) {
+  .menu {
+    display: none;
+  }
+  .home {
+    display: block;
+    font-weight: 800;
+    font-size: 1.8rem;
+  }
+  .background {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
