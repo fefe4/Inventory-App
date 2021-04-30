@@ -4,14 +4,14 @@
 
   <form method='Post' enctype="multipart/form-data" action="">
     <label for="name">Name</label>
-    <input type="text", placeholder="Vegetables, Fruits, Meats, Drinks, Sodas, Snacks...", value={{product.name}} name="name">
+    <input type="text", placeholder="Vegetables, Fruits, Meats, Drinks, Sodas, Snacks..." name="name" value={{product.name}} >
     <label for="price">Price</label>
     <input type="number", placeholder="00", value={{product.price}} name="price">
     <label for="description">Description</label>
-    <input type="text", placeholder="some description about this product", value={{product.description}} name="description">
+    <input type="text", placeholder="some description about this product" name="description" value={{product.description}} >
     <label for="code">Code:</label>
-    <input type="number", placeholder="00000000000000000", value={{product.code}} name="code">
-    <label></label>
+    <input type="number", placeholder="00000000000000000", name="code", value={{product.code}} >
+    <label>Image:</label>
     <input type="file" class="form-control-file" name="uploaded_file">
     <label for="categorie">Categorie</label>
     <div>
@@ -20,6 +20,8 @@
       <label for={{_id}}>{{name}}</label>
     {{/each}}
     </div>
+    <label for="password">Password</label>
+    <input placeholder="password" type="text" name="password" required="true">
     <button (type="submit")>Submit</button>
   </form>
 

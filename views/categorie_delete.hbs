@@ -11,6 +11,10 @@
   <p>do you really wish to delete this Categorie?</p>
   <form method="POST">
     <input type='hidden' name='categorieid' required="true" value={{categorie._id}}>{{categorie._id}}
+    <label for="password"></label>
+    <input type='text' required='true' name="password">
+    <label for="password">Password</label>
+    <input placeholder="password" type="text" name="password" required="true">
     <button type="submit">Delete</button>
   </form>
 {{/if}}

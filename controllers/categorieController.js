@@ -117,32 +117,42 @@ exports.categorie_delete_get = function(req, res, next) {
 
 // Handle categorie delete on POST.
 exports.categorie_delete_post = function(req, res, next) {
+  body('password', 'wrong password').isLength({min:1}).equals(":D").escape()
 
-  async.parallel({
-      categorie: function(callback) {
-        Categorie.findById(req.body.categorieid).exec(callback)
-        console.log(Categorie)
-      },
-      categories_products: function(callback) {
-        Product.find({ 'categorie': req.body.categorieid }).exec(callback)
-      },
-  }, function(err, results) {
-      if (err) { return next(err); }
-      // Success
-      if (results.categories_products.length > 0) {
-          // Categorie has Products. Render in same way as for GET route.
-          res.render('categorie_delete', { title: 'Delete Categorie', categorie: results.categorie, categorie_products: results.categories_products } );
-          return;
-      }
-      else {
-          // Categorie has no Products. Delete it and redirect to the list of categories.
-          Categorie.findByIdAndRemove(req.body.categorieid, function deleteCategorie(err) {
-              if (err) { return next(err); }
-              // Success - go to author list
-              res.redirect('/catalog/categorie')
-          })
-      }
-  });
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.send("wrong password");
+  }
+  else {
+    async.parallel({
+        categorie: function(callback) {
+          Categorie.findById(req.body.categorieid).exec(callback)
+          console.log(Categorie)
+        },
+        categories_products: function(callback) {
+          Product.find({ 'categorie': req.body.categorieid }).exec(callback)
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        // Success
+        
+        //Wrong password
+        if (results.categories_products.length > 0) {
+            // Categorie has Products. Render in same way as for GET route.
+            res.render('categorie_delete', { title: 'Delete Categorie', categorie: results.categorie, categorie_products: results.categories_products } );
+            return;
+        }
+        else {
+            // Categorie has no Products. Delete it and redirect to the list of categories.
+            Categorie.findByIdAndRemove(req.body.categorieid, function deleteCategorie(err) {
+                if (err) { return next(err); }
+                // Success - go to author list
+                res.redirect('/catalog/categorie')
+            })
+        }
+    });
+  }
 };
 
 
@@ -172,6 +182,7 @@ exports.categorie_update_post = [
 
   // Validate and santize the name field.
   body('name', 'Categorie name required').trim().isLength({ min: 1 }).escape(),
+  body('password', 'wrong password').isLength({min:1}).equals(":D").escape(),
 
   // Process request after validation and sanitization.
   (req, res, next) => {
