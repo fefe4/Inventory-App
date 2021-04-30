@@ -4,7 +4,10 @@
   </form>
   <section class="categories">
     {{#each categories}}
+    <div>
+      <img src='/{{this.image}}' alt="">
       <a href='{{this.url}}'>{{this.name}}</a>
+    </div>
     {{/each}}
   </section>
   <section>
@@ -17,8 +20,8 @@
           <h2>{{name}}</h2>
           </a>
           <p>{{this.description}}</p>
-          <h3>${{this.price}}</h3>
-          <button>Add to Cart</button>
+         <h3>${{this.price}}</h3>
+         <button>Add to Cart</button>
       </article>         
       {{/each}}
     </div>   

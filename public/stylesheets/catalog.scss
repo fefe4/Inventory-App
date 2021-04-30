@@ -15,6 +15,19 @@ main{
 .categories {
   display:flex;
   justify-content: space-around;
+  img{
+    width:20vw;
+    height:auto;
+    border-radius:50%;
+  }
+  div {
+    display:flex;
+    flex-direction: column;
+    a{
+      margin: 0.5rem 0;
+      text-align: center;
+    }
+  }
 }
 
 .products {

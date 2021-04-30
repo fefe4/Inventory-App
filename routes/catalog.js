@@ -31,12 +31,12 @@ router.get("/product/:id/delete", product_controller.product_delete_get);
 router.post("/product/:id/delete", product_controller.product_delete_post);
 //categorie controllers
 router.get("/categorie/create", categorie_controller.categorie_create_get);
-router.post("/categorie/create", categorie_controller.categorie_create_post);
+router.post("/categorie/create", upload.single('uploaded_categorie'), categorie_controller.categorie_create_post);
 router.get("/categorie/:id", categorie_controller.categorie_detail);
 router.get("/categorie/:id/delete", categorie_controller.categorie_delete_get);
 router.post("/categorie/:id/delete",categorie_controller.categorie_delete_post);
 router.get("/categorie/:id/update", categorie_controller.categorie_update_get);
-router.post("/categorie/:id/update",categorie_controller.categorie_update_post);
+router.post("/categorie/:id/update", upload.single('uploaded_categorie'), categorie_controller.categorie_update_post);
 
 
 

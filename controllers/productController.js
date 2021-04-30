@@ -92,9 +92,7 @@ exports.product_create_post = [
 
   // Process request after validation and sanitization.
   (req, res, next) => {
-    console.log(JSON.stringify(req.file));
-    console.log(JSON.stringify(req.file.path));
-
+   
     
       // Extract the validation errors from a request.
       const errors = validationResult(req);

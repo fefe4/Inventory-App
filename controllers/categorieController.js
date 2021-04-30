@@ -1,6 +1,7 @@
 var Categorie = require('../models/categorie');
 var Product = require('../models/product');
 var async = require('async')
+var multer  = require('multer');
 const { body,validationResult } = require("express-validator");
 
 // Display list of all Gategorie.
@@ -59,7 +60,8 @@ exports.categorie_create_post =  [
   
       // Create a categorie object with escaped and trimmed data.
       var categorie = new Categorie(
-        { name: req.body.name }
+        { name: req.body.name,
+        image: `uploads/${req.file.originalname}`}
       );
   
       if (!errors.isEmpty()) {
@@ -173,14 +175,15 @@ exports.categorie_update_post = [
 
   // Process request after validation and sanitization.
   (req, res, next) => {
-
+    console.log(req.file.originalname)
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
     // Create a categorie object with escaped and trimmed data.
     var categorie = new Categorie(
       { name: req.body.name,
-        _id:req.params.id //This is required
+        _id:req.params.id, //This is required
+        image:`uploads/${req.file.originalname}`, 
       }
     );
 

@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var CategorieSchema = new Schema ({
-  name: {type:String, required:true, maxLength:100}
+  name: {type:String, required:true, maxLength:100},
+  image: {type:String}
 })
 
 CategorieSchema
