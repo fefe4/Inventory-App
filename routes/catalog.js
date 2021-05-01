@@ -19,7 +19,7 @@ var categorie_controller = require("../controllers/categorieController");
 //   }
 // })
 
-var upload = multer({ dest: '../public/images/tmp/uploads' })
+var upload = multer({ dest: path.join(__dirname,'../public/images/tmp/uploads')})
 
 
 // GET catalog home page.
