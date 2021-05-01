@@ -116,13 +116,15 @@ exports.categorie_delete_get = function(req, res, next) {
 };
 
 // Handle categorie delete on POST.
-exports.categorie_delete_post = function(req, res, next) {
-  body('password', 'wrong password').isLength({min:1}).equals(":D").escape()
+exports.categorie_delete_post = [
+  body('password', 'wrong password').isLength({min:1}).equals(":D").escape(),
 
+  (req,res,next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    res.send("wrong password");
+    res.render('delete_categorie', { title: 'Delete Categorie', errors: errors.array() });
+
   }
   else {
     async.parallel({
@@ -137,7 +139,6 @@ exports.categorie_delete_post = function(req, res, next) {
         if (err) { return next(err); }
         // Success
         
-        //Wrong password
         if (results.categories_products.length > 0) {
             // Categorie has Products. Render in same way as for GET route.
             res.render('categorie_delete', { title: 'Delete Categorie', categorie: results.categorie, categorie_products: results.categories_products } );
@@ -153,7 +154,7 @@ exports.categorie_delete_post = function(req, res, next) {
         }
     });
   }
-};
+}];
 
 
 

@@ -6,7 +6,7 @@
     <label for="name">Name</label>
     <input type="text", placeholder="Vegetables, Fruits, Meats, Drinks, Sodas, Snacks..." name="name" value={{product.name}} >
     <label for="price">Price</label>
-    <input type="number", placeholder="00", value={{product.price}} name="price">
+    <input type="number", placeholder="00", name="price", value={{product.price}} >
     <label for="description">Description</label>
     <input type="text", placeholder="some description about this product" name="description" value={{product.description}} >
     <label for="code">Code:</label>
@@ -24,4 +24,8 @@
     <input placeholder="password" type="text" name="password" required="true">
     <button (type="submit")>Submit</button>
   </form>
-
+  <ul>
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>

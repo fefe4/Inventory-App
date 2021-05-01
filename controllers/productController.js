@@ -87,6 +87,7 @@ exports.product_create_post = [
   body('description', 'description must not be empty.').trim().isLength({ min: 1 }).escape(),
   body('code', 'code must not be empty').trim().isLength({ min: 1 }).escape(),
   body('price', 'price must not be empty').trim().isLength({min: 1 }).escape(),
+  body('password').escape(),    
   body('categorie.*').escape(),
 
 
@@ -107,7 +108,7 @@ exports.product_create_post = [
           image: `uploads/${req.file.originalname}`
          });
 
-      if (!errors.isEmpty()) {
+      if (!errors.isEmpty()) { 
           // There are errors. Render form again with sanitized values/error messages.
 
           // Get all authors and categories for form.
@@ -159,34 +160,37 @@ exports.product_delete_get = function(req, res) {
 };
 
 // Handle product delete on POST.
-exports.product_delete_post = function(req, res, next) {
-    body('password', 'wrong password').isLength({min:1}).equals(":D").escape();
-    const errors = validationResult(req);
-    if (!errors.isEmpty()){
-        res.render('delete_form', { title: 'Delete Product', product:product, errors: errors.array() });
-    } 
-    else {
-        async.parallel({
-            product: function(callback) {
-            Product.findById(req.body.productid).exec(callback)
-            console.log(Product)
-            },
-        
-        }, function(err, results) {
-            if (err) { return next(err); }
-            // Success
-            else {
-                // Categorie has no Products. Delete it and redirect to the list of categories.
-                Product.findByIdAndRemove(req.body.productid, function deleteProduct(err) {
-                    if (err) { return next(err); }
-                    // Success - go to author list
-                    res.redirect('/catalog')
-                })
-            }
+exports.product_delete_post =  [
+    body('password', 'wrong password').isLength({min:1}).equals(":D").escape(),
+  
+    (req,res,next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()){
+            res.render('delete_form', { title: 'Delete Product', product:product, errors: errors.array() });
+        } 
+        else {
+            async.parallel({
+                product: function(callback) {
+                Product.findById(req.body.productid).exec(callback)
+                console.log(Product)
+                },
             
-        })
-    };
-};
+            }, function(err, results) {
+                if (err) { return next(err); }
+                // Success
+                else {
+                    // Categorie has no Products. Delete it and redirect to the list of categories.
+                    Product.findByIdAndRemove(req.body.productid, function deleteProduct(err) {
+                        if (err) { return next(err); }
+                        // Success - go to author list
+                        res.redirect('/catalog')
+                    })
+                }
+                
+            })
+        };
+    }
+]
 
 exports.product_update_get = function(req, res, next) {
 
