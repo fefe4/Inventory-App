@@ -105,7 +105,7 @@ exports.product_create_post = [
           code: req.body.code,
           price:req.body.price,
           categorie: req.body.categorie,
-          image: `images/uploads/${req.file.originalname}`
+          image: `images/temp/uploads/${req.file.originalname}`
          });
 
       if (!errors.isEmpty()) { 
@@ -261,7 +261,7 @@ exports.product_update_post = [
             price:req.body.price, 
             categorie: (typeof req.body.categorie==='undefined') ? [] : req.body.categorie,
             _id:req.params.id, //This is required, or a new ID will be assigned!
-            image: `images/uploads/${req.file.originalname}`
+            image: `images/temp/uploads/${req.file.originalname}`
            });
 
         if (!errors.isEmpty()) {
