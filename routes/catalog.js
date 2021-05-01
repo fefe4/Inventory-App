@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
-var multer  = require('multer')
-var path = require('path'); 
+// var multer  = require('multer')
+// var path = require('path'); 
 
 
 var product_controller = require("../controllers/productController");
@@ -19,7 +19,7 @@ var categorie_controller = require("../controllers/categorieController");
 //   }
 // })
 
-var upload = multer({ dest: path.join(__dirname,'../public/images/tmp/uploads')})
+// var upload = multer({ dest: path.join(__dirname,'../public/images/tmp/uploads')})
 
 
 // GET catalog home page.

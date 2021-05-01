@@ -1,7 +1,7 @@
 var Categorie = require('../models/categorie');
 var Product = require('../models/product');
 var async = require('async')
-var multer  = require('multer');
+// var multer  = require('multer');
 const { body,validationResult } = require("express-validator");
 
 // Display list of all Gategorie.
