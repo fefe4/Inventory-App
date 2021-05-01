@@ -2,8 +2,8 @@ var Product = require('../models/product');
 var Categorie = require('../models/categorie');
 var async = require('async');
 var ProductInstance = require ('../models/productInstance');
-var multer  = require('multer');
-var upload = multer({ dest: '../public/images/uploads/' });
+// var multer  = require('multer');
+// var upload = multer({ dest: '../public/images/uploads/' });
 
 const { body,validationResult } = require("express-validator");
 
