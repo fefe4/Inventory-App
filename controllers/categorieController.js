@@ -61,7 +61,7 @@ exports.categorie_create_post =  [
       // Create a categorie object with escaped and trimmed data.
       var categorie = new Categorie(
         { name: req.body.name,
-        image: `uploads/${req.file.originalname}`}
+        image: `images/uploads/${req.file.originalname}`}
       );
   
       if (!errors.isEmpty()) {
@@ -195,7 +195,7 @@ exports.categorie_update_post = [
     var categorie = new Categorie(
       { name: req.body.name,
         _id:req.params.id, //This is required
-        image:`uploads/${req.file.originalname}`, 
+        image:`images/uploads/${req.file.originalname}`, 
       }
     );
 
