@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
-// var multer  = require('multer')
-// var path = require('path'); 
+var multer  = require('multer')
+var path = require('path'); 
 
 
 var product_controller = require("../controllers/productController");
@@ -9,15 +9,15 @@ var categorie_controller = require("../controllers/categorieController");
 // Require controller modules.
 // var product_controller = require('../controllers/productController');
 
-/// product ROUTES ///
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, path.join(__dirname, '../public/images/tmp/uploads'))
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.originalname)
-//   }
-// })
+/ product ROUTES ///
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, '../public/images/tmp/uploads'))
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
 
 // var upload = multer({ dest: path.join(__dirname,'../public/images/tmp/uploads')})
 
