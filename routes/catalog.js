@@ -10,15 +10,17 @@ var categorie_controller = require("../controllers/categorieController");
 // var product_controller = require('../controllers/productController');
 
 /// product ROUTES ///
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../public/images/tmp/uploads'))
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  }
-})
-var upload = multer({ storage: storage })
+// var storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, path.join(__dirname, '../public/images/tmp/uploads'))
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname)
+//   }
+// })
+
+var upload = multer({ dest: '../public/images/tmp/uploads' })
+
 
 // GET catalog home page.
 router.get("/", product_controller.catalog);
