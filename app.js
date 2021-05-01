@@ -6,8 +6,12 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var catalogRouter = require('./routes/catalog');
+var compression = require('compression');
+var helmet = require('helmet');
 
 var app = express();
+app.use(compression());
+app.use(helmet());
 
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb+srv://pepe:mrpepe@cluster0.wilg6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'

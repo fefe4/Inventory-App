@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var multer  = require('multer')
 
+
 var product_controller = require("../controllers/productController");
 var categorie_controller = require("../controllers/categorieController");
 // Require controller modules.
