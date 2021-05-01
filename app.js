@@ -10,7 +10,7 @@ var compression = require('compression');
 var helmet = require('helmet');
 
 var app = express();
-app.use(compression());
+
 app.use(helmet());
 
 var mongoose = require('mongoose');
@@ -28,8 +28,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(compression());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/catalog', catalogRouter);
 
