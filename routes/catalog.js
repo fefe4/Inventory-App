@@ -19,7 +19,7 @@ var storage = multer.diskStorage({
   }
 })
 
-// var upload = multer({ dest: path.join(__dirname,'../public/images/tmp/uploads')})
+var upload = multer({ dest: path.join(__dirname,'../public/images/tmp/uploads')})
 
 
 // GET catalog home page.
