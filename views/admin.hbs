@@ -4,7 +4,7 @@
     <ul>
       {{#each categories}}
         <li>
-          <h5>{{this.name}}</h5>
+          <h5>{{this.name}}:</h5>
           <a href='categorie/{{this.id}}/delete'>Delete</a>
           <a href='categorie/{{this.id}}/update'>Update</a>
         </li>
@@ -18,7 +18,7 @@
     <ul>
     {{#each product_list}}
       <li>
-        <h5>{{this.name}}</h5> 
+        <h5>{{this.name}}:</h5> 
         <a href='product/{{this.id}}/delete'>Delete</a>
         <a href='product/{{this.id}}/update'>Update</a>
       </li>

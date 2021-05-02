@@ -39,6 +39,27 @@ main{
   }
 }
 
+@media (min-width:960px) {
+  .categories{
+    overflow-y: unset;
+    justify-content: space-around;
+    
+    img {
+      width:10vw;
+      border-radius: 15%;
+    }
+    h2{
+      font-size:1.2rem;
+    }
+    
+  }
+  .products {
+    article {
+      width:20%;
+    }
+  }
+ }
+
 .products {
   display:flex; 
   flex-wrap: wrap;
@@ -162,22 +183,30 @@ a{
   color:$color_three;
   font-weight:800;
   margin: 0.5 rem 0;
+  color:$color_four;
 }
 
 //forms 
+ .formTitle {
+   font-size:2rem;
+   text-decoration: underline;
+   margin: 1rem 0;
+   margin-left: 5%;
+ }
 
  form {
    display:flex;
    flex-direction: column;
-   margin: 5%;
+   margin: 1.5rem 5% ;
    font-size: 1.5rem;
    label, input, button {
-     margin: 1%;
+     padding:2.5%;
    }
    div {
      display:flex;
    }
    button{
+     margin-top: 2rem; 
      width:60%;
      padding:1rem;
      font-size:2rem;
@@ -185,24 +214,32 @@ a{
    }
  }
 
+@media (min-width:720px) {
+  form {
+    width:60%;  
+  }
+}
 
-@media (min-width:960px) {
- .categories{
-   overflow-y: unset;
-   justify-content: space-around;
-   
-   img {
-     width:10vw;
-     border-radius: 15%;
-   }
-   h2{
-     font-size:1.2rem;
-   }
-   
- }
- .products {
-   article {
-     width:20%;
-   }
- }
+//deleteForm 
+
+
+
+//admin
+
+.adminCategories, .adminProducts {
+  margin-left:5%;
+  margin-top:1rem;
+  h2{
+    font-size:2rem; 
+    text-decoration: underline;
+  }
+  li {
+    margin: 1% 0;
+    display:flex;
+    margin-left: 5%;
+  }
+  a {
+    margin-left: 5%;
+  }
+
 }

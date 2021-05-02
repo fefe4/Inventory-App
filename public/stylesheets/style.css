@@ -68,7 +68,9 @@ main {
 }
 
 .searchBar input {
-  height: 5vh;
+  height: 3rem;
+  border-radius: 95vw;
+  font-size: 1.5rem;
 }
 
 .categories {
@@ -101,6 +103,24 @@ main {
 .categories div h2 {
   margin: 0.5rem 0;
   text-align: center;
+}
+
+@media (min-width: 960px) {
+  .categories {
+    overflow-y: unset;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .categories img {
+    width: 10vw;
+    border-radius: 15%;
+  }
+  .categories h2 {
+    font-size: 1.2rem;
+  }
+  .products article {
+    width: 20%;
+  }
 }
 
 .products {
@@ -255,6 +275,13 @@ a {
   margin: 0.5 rem 0;
 }
 
+.formTitle {
+  font-size: 2rem;
+  text-decoration: underline;
+  margin: 1rem 0;
+  margin-left: 5%;
+}
+
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -263,12 +290,12 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 5%;
+  margin: 1.5rem 5%;
   font-size: 1.5rem;
 }
 
 form label, form input, form button {
-  margin: 1%;
+  padding: 2.5%;
 }
 
 form div {
@@ -278,28 +305,39 @@ form div {
 }
 
 form button {
+  margin-top: 2rem;
   width: 60%;
   padding: 1rem;
   font-size: 2rem;
   background-color: white;
 }
 
-@media (min-width: 960px) {
-  .categories {
-    overflow-y: unset;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+@media (min-width: 720px) {
+  form {
+    width: 60%;
   }
-  .categories img {
-    width: 10vw;
-    border-radius: 15%;
-  }
-  .categories h2 {
-    font-size: 1.2rem;
-  }
-  .products article {
-    width: 20%;
-  }
+}
+
+.adminCategories, .adminProducts {
+  margin-left: 5%;
+  margin-top: 1rem;
+}
+
+.adminCategories h2, .adminProducts h2 {
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.adminCategories li, .adminProducts li {
+  margin: 1% 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 5%;
+}
+
+.adminCategories a, .adminProducts a {
+  margin-left: 5%;
 }
 
 /**************border-box for all elements*************/
@@ -360,7 +398,6 @@ main {
 
 main h1 {
   font-size: 9vh;
-  color: #87b37a;
 }
 
 .background {

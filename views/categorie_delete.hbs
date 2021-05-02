@@ -1,19 +1,21 @@
-<h1>{{title}}:{{categorie.name}}</h1>
 
-{{#if categorie_products.length}}
+  <main>
+  <h1 class="formTitle" >{{title}}:{{categorie.name}}</h1>
 
-  <p>Delete the following books before attempting to delete this author.</p>
-  {{#each categorie_products}}
-    <a href={{url}}>{{name}}</a>
-  {{/each}}
+  {{#if categorie_products.length}}
 
-{{else}}
-  <p>do you really wish to delete this Categorie?</p>
-  <form method="POST">
-    <input type='hidden' name='categorieid' required="true" value={{categorie._id}}>{{categorie._id}}
-    <label for="password">Password</label>
-    <input placeholder="password" type="text" name="password" required="true">
-    <button type="submit">Delete</button>
-  </form>
-{{/if}}
-  
+    <p>Delete the following products before attempting to delete this categorie.</p>
+    {{#each categorie_products}}
+      <a href={{url}}>{{name}}</a>
+    {{/each}}
+
+  {{else}}
+    <p>do you really wish to delete this Categorie?</p>
+    <form method="POST">
+      <input type='hidden' name='categorieid' required="true" value={{categorie._id}}>{{categorie._id}}
+      <label for="password">Password</label>
+      <input placeholder="password" type="text" name="password" required="true">
+      <button type="submit">Delete</button>
+    </form>
+  {{/if}}
+</main>
