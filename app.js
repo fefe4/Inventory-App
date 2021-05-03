@@ -8,13 +8,14 @@ var indexRouter = require('./routes/index');
 var catalogRouter = require('./routes/catalog');
 var compression = require('compression');
 var helmet = require('helmet');
+require('dotenv').config()
 
 var app = express();
 
 app.use(helmet());
 
 var mongoose = require('mongoose');
-var dev_db_url = 'mongodb+srv://pepe:mrpepe@cluster0.wilg6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+var dev_db_url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.wilg6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
